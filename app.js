@@ -1,8 +1,8 @@
-const names =require('./names')
-const sayhi = require('./util')
+const {readFileSync ,writeFileSync} = require('fs')
 
-const secret='vishnu'
-
-sayhi(names.name1)
-sayhi(names.name3)
-
+const data = readFileSync('./folder/first.txt','ascii')
+console.log(data);
+writeFileSync(
+    './folder/example.txt',
+    `so this is how it goes ${data} okay`
+)
