@@ -1,8 +1,5 @@
-const {readFileSync ,writeFileSync} = require('fs')
+const lo = require('lodash')
+const item=[1,[2,[3,[8],4,5]]]
 
-const data = readFileSync('./folder/first.txt','ascii')
-console.log(data);
-writeFileSync(
-    './folder/example.txt',
-    `so this is how it goes ${data} okay`
-)
+const newitem=lo.flattenDeep(item);
+console.log(newitem);
