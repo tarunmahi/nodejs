@@ -1,35 +1,20 @@
-const express = require('express')
+const express=require('express')
 const app =express()
-const {products,people} = require('./data')
-// app.use(express.static('./public/navbar-app'))
+const logger = require('./logger')
+
+app.use('/about',logger)
+
 app.get('/',(req,res)=>{
-    // res.json([{name:'tarun'},{name:'jithendra'}])
-    // res.json(products)
-    res.send(`<h1> home page </h1> <a href='/api/products'> products page </a>`)
+    res.send(`<h3>Home page </h3>`)
 })
-app.get('/api/products' ,(req,res)=>{
-    const newproduct = products.map((product)=>{
-        const {id,name,price} =product;
-        return {id,name,price}
-    })
-    res.send(newproduct);    
-    
+app.get('/about',(req,res)=>{
+    res.send(`<h3>about  page </h3>`)
 })
-app.get('/api/products/:productID',(req,res)=>{
-    // const prod = products.find((product)=>product.id===1);
-    // res.json(prod)
-    // console.log(req);
-    // console.log(req.params);
-    const {productID} = req.params;
-
-    const prod = products.find((product)=> product.id===Number(productID))
-    res.json(prod)
-    
-    
+app.get('/about/page',(req,res)=>{
+    res.send(`<h3>page  page </h3>`)
 })
-
 
 app.listen(5000,()=>{
-    console.log(`listening on port 5000`);
+    console.log(`app listening on port 5000`);
     
-})
+}) 
